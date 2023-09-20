@@ -21,8 +21,7 @@ function Quiz() {
   };
 
   const submitAnswer = (value) => {
-    if (!answers[currentQuestionIndex])
-      setAnswers((prevState) => [...prevState, value]);
+    setAnswers((prevState) => [...prevState, value]);
     goToNext();
   };
 
@@ -53,6 +52,7 @@ function Quiz() {
               islastQuestion={currentQuestionIndex + 1 === questions.length}
               goToPrevious={goToPrevious}
               selectedValue={answers[currentQuestionIndex] || null}
+              goToNext={goToNext}
             />
           )}
         </Container>

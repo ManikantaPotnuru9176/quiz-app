@@ -18,6 +18,7 @@ export default function QuestionCard(props) {
     islastQuestion,
     goToPrevious,
     selectedValue,
+    goToNext,
   } = props;
   const [value, setValue] = React.useState(null);
 
@@ -31,6 +32,10 @@ export default function QuestionCard(props) {
 
   const handlePreview = () => {
     goToPrevious();
+  };
+
+  const handleNext = () => {
+    goToNext();
   };
 
   const handleSubmit = () => {
@@ -79,15 +84,26 @@ export default function QuestionCard(props) {
           >
             Preview
           </Button>
-          <Button
-            disabled={!value}
-            onClick={handleSubmit}
-            fullWidth
-            variant="outlined"
-            size="small"
-          >
-            {islastQuestion ? "Submit Quiz" : "Submit & Next"}
-          </Button>
+          {!selectedValue ? (
+            <Button
+              disabled={!value}
+              onClick={handleSubmit}
+              fullWidth
+              variant="outlined"
+              size="small"
+            >
+              {islastQuestion ? "Submit Quiz" : "Submit & Next"}
+            </Button>
+          ) : (
+            <Button
+              onClick={handleNext}
+              fullWidth
+              variant="outlined"
+              size="small"
+            >
+              Next
+            </Button>
+          )}
         </CardActions>
       </Card>
     </Box>
